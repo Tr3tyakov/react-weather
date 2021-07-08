@@ -1,0 +1,15 @@
+@media (max-width: 900px) {
+  .weather {
+    align-items: center;
+    justify-content: center;
+    &__about {
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+    }
+  }
+  .blocks {
+    align-items: center;
+    justify-content: center;
+  }
+}
