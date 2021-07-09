@@ -2,7 +2,11 @@ import React from 'react';
 import './Select.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenPressure, setSelectedPressure } from '../Reducers/Addition/_acitons';
+import {
+  setOpenPressure,
+  setSelectedPressure,
+  setSlicePressure,
+} from '../Reducers/Addition/_acitons';
 import arrow from '../images/arrow.png';
 const type = ['All', 'Today', 'Tomorrow'];
 
@@ -19,6 +23,14 @@ function SelectPressure() {
   };
   const changePressure = (value) => {
     dispatch(setSelectedPressure(value));
+    switch (value) {
+      case 'All':
+        return dispatch(setSlicePressure(0, -1));
+      case 'Today':
+        return dispatch(setSlicePressure(0, 4));
+      case 'Tomorrow':
+        return dispatch(setSlicePressure(4, 11));
+    }
   };
   return (
     <div className="select" onClick={openPressure}>

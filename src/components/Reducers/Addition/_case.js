@@ -1,5 +1,7 @@
 //FETCH__REDUCER
 export const FETCH = 'FETCH';
+export const SLICE_TEMP = 'SLICE_TEMP';
+export const SLICE_PRESSURE = 'SLICE_PRESSURE';
 export const LOADING = 'LOADING';
 
 //INPUT__REDUCER

@@ -5,12 +5,18 @@ import { setData } from './Reducers/Addition/_acitons';
 import SelectTemp from './Selects/SelectTemp';
 import SelectPressure from './Selects/SelectPressure';
 
-const Chart = React.memo(function Chart({ temp, data, pressure, chart, city }) {
+const Chart = React.memo(function Chart({
+  temp,
+  data,
+  pressure,
+  chart,
+  city,
+  sliceTemp,
+  slicePressure,
+}) {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    const i = 2;
-    const n = 10;
     const ctx = document.getElementById('canvas').getContext('2d');
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
     const gradientPressure = ctx.createLinearGradient(0, 0, 0, 400);
@@ -22,12 +28,12 @@ const Chart = React.memo(function Chart({ temp, data, pressure, chart, city }) {
     gradientPressure.addColorStop(1, 'rgba(47, 48, 68, 0)');
 
     const dataTemperature = {
-      labels: data.slice(i, n),
+      labels: data.slice(sliceTemp.begin, sliceTemp.end),
       responsive: true,
       datasets: [
         {
           label: 'Temperature',
-          data: temp.slice(i, n),
+          data: temp.slice(sliceTemp.begin, sliceTemp.end),
           fill: true,
           tension: 0.5,
           backgroundColor: gradient,
@@ -41,12 +47,12 @@ const Chart = React.memo(function Chart({ temp, data, pressure, chart, city }) {
       ],
     };
     const dataPressure = {
-      labels: data,
+      labels: data.slice(slicePressure.begin, slicePressure.end),
       responsive: true,
       datasets: [
         {
           label: 'Pressure',
-          data: pressure,
+          data: pressure.slice(slicePressure.begin, slicePressure.end),
           fill: true,
           tension: 0.5,
           backgroundColor: gradientPressure,
@@ -62,7 +68,7 @@ const Chart = React.memo(function Chart({ temp, data, pressure, chart, city }) {
     };
 
     dispatch(setData([dataTemperature, dataPressure]));
-  }, [city]);
+  }, [city, sliceTemp, slicePressure]);
   return (
     <div className="chart">
       <div className="chart-wrap">

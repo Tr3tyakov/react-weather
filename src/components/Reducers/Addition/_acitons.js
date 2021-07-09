@@ -9,11 +9,15 @@ import {
   CHANGE__OPEN__PRESSURE,
   CHANGE__SELECTED__PRESSURE,
   CHANGE__SELECTED__TEMP,
+  SLICE_TEMP,
+  SLICE_PRESSURE,
 } from './_case';
 
 //FETCH
 export const setFetch = (value) => ({ type: FETCH, payload: value });
 export const setLoading = (bool) => ({ type: LOADING, payload: bool });
+export const setSliceTemp = (begin, end) => ({ type: SLICE_TEMP, payload: { begin, end } });
+export const setSlicePressure = (begin, end) => ({ type: SLICE_PRESSURE, payload: { begin, end } });
 
 //DATA
 export const setData = (chart) => ({

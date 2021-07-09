@@ -1,7 +1,9 @@
-import { FETCH } from './Addition/_case';
+import { FETCH, SLICE_TEMP, SLICE_PRESSURE } from './Addition/_case';
 
 let initialState = {
   fetch: {},
+  sliceTemp: { begin: 0, end: -1 },
+  slicePressure: { begin: 0, end: -1 },
   loading: true,
   temp: [],
   pressure: [],
@@ -9,6 +11,7 @@ let initialState = {
 };
 
 export function FetchReducer(state = initialState, action) {
+  console.log(action.payload);
   switch (action.type) {
     case FETCH: {
       const temp = action.payload.list.map((element) => {
@@ -20,7 +23,7 @@ export function FetchReducer(state = initialState, action) {
 
       const data = action.payload.list.map((element) => {
         let time = new Date(element.dt * 1000).toLocaleString('en-us', {
-          weekday: 'long',
+          day: '2-digit',
           hour: 'numeric',
           minute: 'numeric',
         });
@@ -28,6 +31,20 @@ export function FetchReducer(state = initialState, action) {
       });
       return { ...state, fetch: action.payload, loading: false, temp, pressure, data };
     }
+    case SLICE_TEMP:
+      return {
+        ...state,
+        sliceTemp: { ...state.sliceTemp, begin: action.payload.begin, end: action.payload.end },
+      };
+    case SLICE_PRESSURE:
+      return {
+        ...state,
+        slicePressure: {
+          ...state.slicePressure,
+          begin: action.payload.begin,
+          end: action.payload.end,
+        },
+      };
     default:
       return state;
   }

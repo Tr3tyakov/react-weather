@@ -9,24 +9,35 @@ import { fetchOffer } from './components/Reducers/Addition/_acitons';
 import Chart from './components/Chart';
 import direction from './components/images/direction.png';
 import wind from './components/images/wind.png';
+
 function App() {
   const dispatch = useDispatch();
 
-  const { city, loading, temp, data, pressure, fetch, inputValue, chart } = useSelector(
-    ({ CityReducer, FetchReducer, DataReducer }) => {
-      return {
-        fetch: FetchReducer.fetch,
-        loading: FetchReducer.loading,
-        data: FetchReducer.data,
-
-        temp: FetchReducer.temp,
-        pressure: FetchReducer.pressure,
-        chart: DataReducer.chart,
-        city: CityReducer.city,
-        inputValue: CityReducer.inputValue,
-      };
-    },
-  );
+  const {
+    city,
+    loading,
+    temp,
+    data,
+    pressure,
+    fetch,
+    inputValue,
+    chart,
+    sliceTemp,
+    slicePressure,
+  } = useSelector(({ CityReducer, FetchReducer, DataReducer }) => {
+    return {
+      fetch: FetchReducer.fetch,
+      loading: FetchReducer.loading,
+      data: FetchReducer.data,
+      sliceTemp: FetchReducer.sliceTemp,
+      slicePressure: FetchReducer.slicePressure,
+      temp: FetchReducer.temp,
+      pressure: FetchReducer.pressure,
+      chart: DataReducer.chart,
+      city: CityReducer.city,
+      inputValue: CityReducer.inputValue,
+    };
+  });
   React.useEffect(() => {
     dispatch(fetchOffer(city));
   }, [city]);
@@ -55,7 +66,15 @@ function App() {
         </div>
         <div className="body">
           <CurrentCity fetch={fetch} />
-          <Chart temp={temp} data={data} pressure={pressure} chart={chart} city={city} />
+          <Chart
+            temp={temp}
+            data={data}
+            pressure={pressure}
+            chart={chart}
+            city={city}
+            sliceTemp={sliceTemp}
+            slicePressure={slicePressure}
+          />
         </div>
         <div className="blocks">
           <div className="block-info">

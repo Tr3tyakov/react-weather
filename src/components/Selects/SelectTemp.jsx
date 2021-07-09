@@ -1,8 +1,9 @@
 import React from 'react';
 import './Select.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenTemp, setSelectedTemp } from '../Reducers/Addition/_acitons';
+import { setOpenTemp, setSelectedTemp, setSliceTemp } from '../Reducers/Addition/_acitons';
 import arrow from '../images/arrow.png';
+
 const type = ['All', 'Today', 'Tomorrow'];
 
 function SelectTemp() {
@@ -18,6 +19,14 @@ function SelectTemp() {
   };
   const changeTemp = (value) => {
     dispatch(setSelectedTemp(value));
+    switch (value) {
+      case 'All':
+        return dispatch(setSliceTemp(0, -1));
+      case 'Today':
+        return dispatch(setSliceTemp(0, 4));
+      case 'Tomorrow':
+        return dispatch(setSliceTemp(4, 11));
+    }
   };
   return (
     <div className="select" onClick={openTemp}>
