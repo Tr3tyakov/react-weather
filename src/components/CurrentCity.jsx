@@ -7,8 +7,8 @@ import location from './images/location.png';
 
 import time from './images/time.png';
 import calendar from './images/calendar.png';
-import TimeDate from './TimeCity/TimeDate';
-import TimeZone from './TimeCity/TimeZone';
+import TimeDate from './timeCity/TimeDate';
+import TimeZone from './timeCity/TimeZone';
 
 const CurrentCity = React.memo(function CurrentCity({ fetch }) {
   return (

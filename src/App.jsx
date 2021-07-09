@@ -1,18 +1,19 @@
 import React from 'react';
-import Input from './components/Input';
+import Input from './components/header/Input';
 import './components/media/media.scss';
 import './App.scss';
 
 import CurrentCity from './components/CurrentCity';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOffer } from './components/Reducers/Addition/_acitons';
+import { fetchOffer } from './components/Reducers/addition/_acitons';
 import Chart from './components/Chart';
 import direction from './components/images/direction.png';
 import wind from './components/images/wind.png';
+import Weather from './components/Weather';
+import Language from './components/header/Language';
 
 function App() {
   const dispatch = useDispatch();
-
   const {
     city,
     loading,
@@ -62,6 +63,7 @@ function App() {
       <div className="background"></div>
       <div className="container">
         <div className="header">
+          <Language />
           <Input inputValue={inputValue} />
         </div>
         <div className="body">
@@ -118,12 +120,18 @@ function App() {
               />
             </div>
             <div className="clouds">
-              <p className="clouds__title">clouds</p>
+              <p className="clouds__title">{fetch.list[0].weather[0].main}</p>
               <strong>{fetch.list[0].weather[0].description}</strong>
             </div>
           </div>
         </div>
       </div>
+      <div className="line"></div>
+      <section>
+        <div className="container">
+          <Weather fetch={fetch} />
+        </div>
+      </section>
     </>
   );
 }

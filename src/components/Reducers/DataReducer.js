@@ -4,7 +4,7 @@ import {
   CHANGE__OPEN__PRESSURE,
   CHANGE__SELECTED__TEMP,
   CHANGE__SELECTED__PRESSURE,
-} from './Addition/_case';
+} from './addition/_case';
 
 const initialState = {
   chart: [],

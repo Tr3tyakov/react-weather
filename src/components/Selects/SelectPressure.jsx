@@ -6,7 +6,7 @@ import {
   setOpenPressure,
   setSelectedPressure,
   setSlicePressure,
-} from '../Reducers/Addition/_acitons';
+} from '../Reducers/addition/_acitons';
 import arrow from '../images/arrow.png';
 const type = ['All', 'Today', 'Tomorrow'];
 

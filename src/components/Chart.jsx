@@ -1,9 +1,9 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { useDispatch } from 'react-redux';
-import { setData } from './Reducers/Addition/_acitons';
-import SelectTemp from './Selects/SelectTemp';
-import SelectPressure from './Selects/SelectPressure';
+import { setData } from './Reducers/addition/_acitons';
+import SelectTemp from './selects/SelectTemp';
+import SelectPressure from './selects/SelectPressure';
 
 const Chart = React.memo(function Chart({
   temp,

@@ -1,4 +1,4 @@
-import { FETCH, SLICE_TEMP, SLICE_PRESSURE } from './Addition/_case';
+import { FETCH, SLICE_TEMP, SLICE_PRESSURE } from './addition/_case';
 
 let initialState = {
   fetch: {},
@@ -11,7 +11,6 @@ let initialState = {
 };
 
 export function FetchReducer(state = initialState, action) {
-  console.log(action.payload);
   switch (action.type) {
     case FETCH: {
       const temp = action.payload.list.map((element) => {

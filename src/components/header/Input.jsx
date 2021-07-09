@@ -1,8 +1,8 @@
 import React from 'react';
 import './Input.scss';
-import loupe from './images/loupe.png';
+import loupe from '../images/loupe.png';
 import { useDispatch } from 'react-redux';
-import { setCity, setInput } from './Reducers/Addition/_acitons';
+import { setCity, setInput } from '../Reducers/addition/_acitons';
 
 function Input({ inputValue }) {
   const dispatch = useDispatch();

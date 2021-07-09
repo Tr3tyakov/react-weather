@@ -44,6 +44,7 @@ export const fetchOffer = (city) => (dispatch) => {
       `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=60cebb14e59166273d73047e1a60e4ac`,
     )
     .then(({ data }) => {
+      console.log(data);
       dispatch(setFetch(data));
     });
 };

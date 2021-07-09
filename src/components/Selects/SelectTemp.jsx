@@ -1,7 +1,7 @@
 import React from 'react';
 import './Select.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenTemp, setSelectedTemp, setSliceTemp } from '../Reducers/Addition/_acitons';
+import { setOpenTemp, setSelectedTemp, setSliceTemp } from '../Reducers/addition/_acitons';
 import arrow from '../images/arrow.png';
 
 const type = ['All', 'Today', 'Tomorrow'];

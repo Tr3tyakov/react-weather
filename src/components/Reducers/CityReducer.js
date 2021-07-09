@@ -1,4 +1,4 @@
-import { CHANGE__CITY, CHANGE__INPUT } from './Addition/_case';
+import { CHANGE__CITY, CHANGE__INPUT } from './addition/_case';
 
 const initialState = {
   city: 'Sankt-Peterburg',
