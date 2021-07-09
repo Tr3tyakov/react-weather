@@ -1,0 +1,44 @@
+.language {
+  position: relative;
+  width: 65px;
+  padding: 5px;
+  height: 30px;
+  background: #303242;
+  border-radius: 5px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  & p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+  &__select {
+    display: none;
+    position: absolute;
+    top: 34px;
+    background: #2f3044;
+    border: 1px solid #252734;
+    width: 100%;
+    max-height: 70px;
+    border-radius: 5px;
+    z-index: 5;
+  }
+  &__select--active {
+    display: block;
+  }
+  &__type {
+    padding: 4px 8px;
+    transition: all 0.2s linear;
+  }
+  &__type--active {
+    background: #252734;
+  }
+  &__type:hover {
+    background: #252734;
+    transition: all 0.2s linear;
+  }
+}

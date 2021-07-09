@@ -142,6 +142,9 @@ input[type='number']::-webkit-inner-spin-button {
   height: 50px;
   background: #252734;
   z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container {

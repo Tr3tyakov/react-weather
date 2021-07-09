@@ -11,6 +11,8 @@ import {
   CHANGE__SELECTED__TEMP,
   SLICE_TEMP,
   SLICE_PRESSURE,
+  CHANGE__LANGUAGE,
+  OPEN__LANGUAGE,
 } from './_case';
 
 //FETCH
@@ -20,22 +22,20 @@ export const setSliceTemp = (begin, end) => ({ type: SLICE_TEMP, payload: { begi
 export const setSlicePressure = (begin, end) => ({ type: SLICE_PRESSURE, payload: { begin, end } });
 
 //DATA
+export const setOpenTemp = (bool) => ({ type: CHANGE__OPEN__TEMP, payload: bool });
+export const setOpenPressure = (bool) => ({ type: CHANGE__OPEN__PRESSURE, payload: bool });
+export const setSelectedTemp = (bool) => ({ type: CHANGE__SELECTED__TEMP, payload: bool });
+export const setSelectedPressure = (bool) => ({ type: CHANGE__SELECTED__PRESSURE, payload: bool });
 export const setData = (chart) => ({
   type: CHANGE__CHART,
   payload: chart,
 });
 
-//INPUT
+//HEADER
 export const setCity = (bool) => ({ type: CHANGE__CITY, payload: bool });
 export const setInput = (bool) => ({ type: CHANGE__INPUT, payload: bool });
-
-export const setOpenTemp = (bool) => ({ type: CHANGE__OPEN__TEMP, payload: bool });
-export const setOpenPressure = (bool) => ({ type: CHANGE__OPEN__PRESSURE, payload: bool });
-
-export const setSelectedTemp = (bool) => ({ type: CHANGE__SELECTED__TEMP, payload: bool });
-
-export const setSelectedPressure = (bool) => ({ type: CHANGE__SELECTED__PRESSURE, payload: bool });
-
+export const setLanguage = (string) => ({ type: CHANGE__LANGUAGE, payload: string });
+export const setOpenLanguage = (bool) => ({ type: OPEN__LANGUAGE, payload: bool });
 //ASYNC
 export const fetchOffer = (city) => (dispatch) => {
   dispatch(setLoading(true));

@@ -25,7 +25,9 @@ function App() {
     chart,
     sliceTemp,
     slicePressure,
-  } = useSelector(({ CityReducer, FetchReducer, DataReducer }) => {
+    language,
+    isOpenLanguage,
+  } = useSelector(({ HeaderReducer, FetchReducer, DataReducer }) => {
     return {
       fetch: FetchReducer.fetch,
       loading: FetchReducer.loading,
@@ -35,8 +37,10 @@ function App() {
       temp: FetchReducer.temp,
       pressure: FetchReducer.pressure,
       chart: DataReducer.chart,
-      city: CityReducer.city,
-      inputValue: CityReducer.inputValue,
+      city: HeaderReducer.city,
+      language: HeaderReducer.language,
+      isOpenLanguage: HeaderReducer.isOpenLanguage,
+      inputValue: HeaderReducer.inputValue,
     };
   });
   React.useEffect(() => {
@@ -63,7 +67,7 @@ function App() {
       <div className="background"></div>
       <div className="container">
         <div className="header">
-          <Language />
+          <Language language={language} isOpenLanguage={isOpenLanguage} />
           <Input inputValue={inputValue} />
         </div>
         <div className="body">

@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setOpenTemp, setSelectedTemp, setSliceTemp } from '../Reducers/addition/_acitons';
 import arrow from '../images/arrow.png';
 
-const type = ['All', 'Today', 'Tomorrow'];
-
-function SelectTemp() {
+const SelectTemp = React.memo(function SelectTemp({ type }) {
   const dispatch = useDispatch();
   const { isOpenTemp, selectedTemp } = useSelector(({ DataReducer }) => {
     return {
@@ -18,6 +16,9 @@ function SelectTemp() {
     dispatch(setOpenTemp());
   };
   const changeTemp = (value) => {
+    if (value === selectedTemp) {
+      return;
+    }
     dispatch(setSelectedTemp(value));
     switch (value) {
       case 'All':
@@ -34,7 +35,10 @@ function SelectTemp() {
       <div className={isOpenTemp ? 'modal' : 'modal--disable'}>
         {type.map((element, index) => {
           return (
-            <p className="type" key={index} onClick={(e) => changeTemp(e.target.innerHTML)}>
+            <p
+              className={selectedTemp === element ? 'type type--active' : 'type'}
+              key={index}
+              onClick={(e) => changeTemp(e.target.innerHTML)}>
               {element}
             </p>
           );
@@ -45,6 +49,6 @@ function SelectTemp() {
       </div>
     </div>
   );
-}
+});
 
 export default SelectTemp;

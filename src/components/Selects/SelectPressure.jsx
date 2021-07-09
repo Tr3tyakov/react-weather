@@ -8,9 +8,8 @@ import {
   setSlicePressure,
 } from '../Reducers/addition/_acitons';
 import arrow from '../images/arrow.png';
-const type = ['All', 'Today', 'Tomorrow'];
 
-function SelectPressure() {
+const SelectPressure = React.memo(function SelectPressure({ type }) {
   const dispatch = useDispatch();
   const { isOpenPressure, selectedPressure } = useSelector(({ DataReducer }) => {
     return {
@@ -18,10 +17,14 @@ function SelectPressure() {
       selectedPressure: DataReducer.selectedPressure,
     };
   });
+
   const openPressure = () => {
     dispatch(setOpenPressure());
   };
   const changePressure = (value) => {
+    if (value === selectedPressure) {
+      return;
+    }
     dispatch(setSelectedPressure(value));
     switch (value) {
       case 'All':
@@ -38,7 +41,10 @@ function SelectPressure() {
       <div className={isOpenPressure ? 'modal' : 'modal--disable'}>
         {type.map((element, index) => {
           return (
-            <p className="type" key={index} onClick={(e) => changePressure(e.target.innerHTML)}>
+            <p
+              className={selectedPressure === element ? 'type type--active' : 'type'}
+              key={index}
+              onClick={(e) => changePressure(e.target.innerHTML)}>
               {element}
             </p>
           );
@@ -49,6 +55,6 @@ function SelectPressure() {
       </div>
     </div>
   );
-}
+});
 
 export default SelectPressure;

@@ -5,6 +5,7 @@ import { setData } from './Reducers/addition/_acitons';
 import SelectTemp from './selects/SelectTemp';
 import SelectPressure from './selects/SelectPressure';
 
+const type = ['All', 'Today', 'Tomorrow'];
 const Chart = React.memo(function Chart({
   temp,
   data,
@@ -72,11 +73,11 @@ const Chart = React.memo(function Chart({
   return (
     <div className="chart">
       <div className="chart-wrap">
-        <SelectTemp />
+        <SelectTemp type={type} />
         <Line id="canvas" width={700} height={400} data={chart[0]} />
       </div>
       <div className="chart-wrap">
-        <SelectPressure />
+        <SelectPressure type={type} />
         <Line id="canvas" width={700} height={400} data={chart[1]} />
       </div>
     </div>
